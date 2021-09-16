@@ -111,8 +111,8 @@ int main(const int argc, const char **argv)
     std::cout << "Result:" << std::endl
         << "x = " << xval << ", y = " << yval << std::endl
         << "f = " << fx.value()
-        << ", fx = " << fx.gradient()
-        << ", fy = " << fy.gradient() << std::endl;
+        << ", fx = " << fx.derivative()
+        << ", fy = " << fy.derivative() << std::endl;
     return 0;
 }
 ```
