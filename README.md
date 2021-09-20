@@ -207,15 +207,12 @@ int main(const int argc, const char **argv) {
     return 1;
   }
 
-  bwd::Vector2d x;
-  x << bwd::Double(3), bwd::Double(2);
-
+  // fill the matrix with bwd::Double() from Eigen matrix
   bwd::Matrix2d c;
   c << bwd::Double(std::stod(argv[1])), bwd::Double(std::stod(argv[2])),
       bwd::Double(std::stod(argv[3])), bwd::Double(std::stod(argv[4]));
 
   bwd::Double y = c.array().sqrt().sum();
-
 
   // NOTE: just need to know the shape of the matrix?
   // Eigen::Matrix2d g;
