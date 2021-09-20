@@ -190,3 +190,40 @@ int main(const int argc, const char **argv)
     return 0;
 }
 ```
+
+### Gradient with Eigen
+```cpp
+#include "Eigen/Eigen"
+#include "adcpp.h"
+#include "adcpp_eigen.h"
+#include <iostream>
+
+using namespace adcpp;
+
+int main(const int argc, const char **argv) {
+
+  if (argc != 5) {
+    std::cout << "Usage: input 4 numbers" << std::endl;
+    return 1;
+  }
+
+  bwd::Vector2d x;
+  x << bwd::Double(3), bwd::Double(2);
+
+  bwd::Matrix2d c;
+  c << bwd::Double(std::stod(argv[1])), bwd::Double(std::stod(argv[2])),
+      bwd::Double(std::stod(argv[3])), bwd::Double(std::stod(argv[4]));
+
+  bwd::Double y = c.array().sqrt().sum();
+
+
+  // NOTE: just need to know the shape of the matrix?
+  // Eigen::Matrix2d g;
+  // just to set up the matrix as the same size as input
+  Eigen::MatrixXd g(2, 2);
+  bwd::gradient(c, y, g);
+  std::cout << g << std::endl;
+
+}
+
+```
