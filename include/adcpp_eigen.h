@@ -8,8 +8,8 @@
 #ifndef ADCPP_EIGEN_H_
 #define ADCPP_EIGEN_H_
 
-#include <adcpp.h>
-#include <Eigen/Core>
+#include "adcpp.h"
+#include "Eigen/Core"
 
 namespace Eigen {
     template<> struct NumTraits<adcpp::fwd::Double>
